@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<head>
+	<script src="static/javascripts/d3.v3.min.js"></script>
+	<script src="static/javascripts/topojson.v1.min.js"></script>
+	<script src="static/javascripts/jquery.min.js"></script>
+	<script src="static/javascripts/d3.tip.v0.6.3.js"></script>
+	  <script src="static/javascripts/queue.v1.min.js"></script>
+	<script src="static/javascripts/jquery-ui.min.js"></script>
+	<script src="static/javascripts/jquery-ui.min.js"></script>
+</head>
+<style>
+body{
+  font-family:helvetica;
+  font-size:18px;
+  color:#aaa;
+}
+#videosList {
+  margin: 0 auto;
+  padding: 0px 80px; }
+  @media (max-width: 1250px) {
+    #videosList {
+      padding: 0px 0px; } }
+  @media (max-width: 900px) {
+    #videosList {
+      padding: 60px 20px; } }
+  #videosList .video {
+    width: 100%;
+    display: inline-block;
+    float: left;
+    position: relative;
+    overflow: hidden; }
+    @media (max-width: 500px) {
+      #videosList .video {
+        width: 100%; } }
+    #videosList .video .videoSlate {
+      width: 960px;
+      height: 261px;
+      -webkit-transition: 5000ms 50ms;
+      -moz-transition: 5000ms 50ms;
+      transition: 5000ms 50ms; }
+      #videosList .video .videoSlate:after {
+        content: ' ';
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: block;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0);
+        -webkit-transition: 500ms 50ms;
+        -moz-transition: 500ms 50ms;
+        transition: 500ms 50ms; }
+      #videosList .video .videoSlate video {
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        position: absolute; }
+    #videosList .video .videoListCopy {
+      display: inline-block;
+      text-align: center;
+      width: 100%;
+      z-index: 20; }
+ 
+
+</style>
+<html>
+<body>
+<div id="videosList">   
+
+From last time - 1_3_s.mp4<br/>
+  <div class="video"> <div class="videoSlate"><video class="thevideo" loop>
+    <source src="video_mp4/1_3_s.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video></div></div>
+5.mp4<br/>
+  <div class="video"> <div class="videoSlate"><video class="thevideo" loop>
+    <source src="video_mp4/5.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video></div></div>
+
+6.mp4<br/>
+    <div class="video"> <div class="videoSlate"><video class="thevideo" loop>
+      <source src="video_mp4/6.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video></div></div>
+</div>
+	<script type="text/javascript" charset="utf-8">
+    var figure = $(".video");
+    var vid = figure.find("video");
+
+    [].forEach.call(figure, function (item,index) {
+        item.addEventListener('mouseover', hoverVideo.bind(item,index), false);
+        item.addEventListener('mouseout', hideVideo.bind(item,index), false);
+    });
+
+    function hoverVideo(index, e) {
+        vid[index].play(); 
+    }
+
+    function hideVideo(index, e) {
+        vid[index].pause(); 
+    }
+	</script>
